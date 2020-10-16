@@ -1,0 +1,14 @@
+<%= simple_form_for @task do |f| %>
+  <%= f.input :title, required: true %>
+
+  <%= f.input :is_done %>
+
+  <%= f.input :note %>
+
+  <%= f.input :deadline_at %>
+
+
+  <%= f.button :submit %>
+  <%= f.button :button, "Reset", type: :reset %>
+
+<% end %>

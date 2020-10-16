@@ -1,0 +1,19 @@
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <strong>Is done:</strong>
+  <%= @task.is_done %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @task.note %>
+</p>
+
+<p>
+  <strong>Deadline at:</strong>
+  <%= @task.deadline_at.strftime('%H:%M %d.%m.%Y') %>
+</p>

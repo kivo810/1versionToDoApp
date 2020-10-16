@@ -1,0 +1,32 @@
+<p>
+<h1>TASKS</h1>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Is done</th>
+    <th>Note</th>
+    <th>Deadline At</th>
+    <th>Created At</th>
+    <th>Updated At</th>
+    <th colspan="1"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+    <td><%= task.title %></td>
+    <td><%= task.is_done %></td>
+    <td><%= task.note%></td>
+    <td><%= task.deadline_at.strftime('%H:%M %n %d.%m.%Y') if task.deadline_at != nil %></td>
+    <td><%= task.created_at.strftime('%H:%M %n %d.%m.%Y')  if task.created_at != nil%></td>
+    <td><%= task.updated_at.strftime('%H:%M %n %d.%m.%Y')  if task.updated_at != nil%></td>
+    <% end %>
+  </tbody>
+</table>
+
+<button>
+  <%= link_to "New Task", new_task_path %>
+</button>
