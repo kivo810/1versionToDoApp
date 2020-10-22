@@ -9,7 +9,7 @@
 
   <%= f.association :category, required: false, collection: Category.where(:user_id => current_user.id) %>
 
-  <%#= f.association :tags, as: :check_boxes, collection: Tag.where(:user_id => current_user.id) %>
+  <%= f.association :tags, as: :check_boxes, collection: Tag.where(:user_id => current_user.id) %>
 
   <%= f.button :submit %>
   <%= f.button :button, "Reset", type: :reset %>
