@@ -22,9 +22,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-    p task_params
     @task.user = current_user
-    #p @task
 
     respond_to do |format|
       if @task.save
