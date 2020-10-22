@@ -17,3 +17,6 @@
   <strong>Deadline at:</strong>
   <%= @task.deadline_at.strftime('%H:%M %d.%m.%Y') %>
 </p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

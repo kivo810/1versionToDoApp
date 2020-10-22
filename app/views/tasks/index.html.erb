@@ -2,7 +2,9 @@
 <h1>TASKS</h1>
 </p>
 
-<table class="table">
+<%= will_paginate @tasks %>
+
+<table>
   <thead>
   <tr>
     <th>Title</th>
@@ -11,19 +13,24 @@
     <th>Deadline At</th>
     <th>Created At</th>
     <th>Updated At</th>
-    <th colspan="1"></th>
+    <th colspan="3"></th>
   </tr>
   </thead>
 
   <tbody>
-    <% @tasks.each do |task| %>
-    <td><%= task.title %></td>
-    <td><%= task.is_done %></td>
-    <td><%= task.note%></td>
-    <td><%= task.deadline_at.strftime('%H:%M %n %d.%m.%Y') if task.deadline_at != nil %></td>
-    <td><%= task.created_at.strftime('%H:%M %n %d.%m.%Y')  if task.created_at != nil%></td>
-    <td><%= task.updated_at.strftime('%H:%M %n %d.%m.%Y')  if task.updated_at != nil%></td>
-    <% end %>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.is_done %></td>
+      <td><%= task.note%></td>
+      <td><%= task.deadline_at.strftime('%H:%M %n %d.%m.%Y') if task.deadline_at != nil %></td>
+      <td><%= task.created_at.strftime('%H:%M %n %d.%m.%Y')  if task.created_at != nil%></td>
+      <td><%= task.updated_at.strftime('%H:%M %n %d.%m.%Y')  if task.updated_at != nil%></td>
+      <td><%= link_to 'Show', task %></td>
+      <td><%= link_to 'Edit', edit_task_path(task) %></td>
+      <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 

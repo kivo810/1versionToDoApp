@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = Task.where(:user_id => current_user.id).includes(:category, :tags => [:tag_associations]).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+    @tasks = Task.where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
   end
 
   def new
