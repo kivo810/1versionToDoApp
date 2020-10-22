@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_085118) do
+ActiveRecord::Schema.define(version: 2020_10_22_085909) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+  end
+
+  create_table "tag_associations", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "tag_id"
+    t.index ["tag_id"], name: "index_tag_associations_on_tag_id"
+    t.index ["task_id"], name: "index_tag_associations_on_task_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -24,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_085118) do
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -33,6 +42,9 @@ ActiveRecord::Schema.define(version: 2020_10_19_085118) do
     t.datetime "deadline_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
+    t.integer "user_id"
+    t.index ["category_id"], name: "index_tasks_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,8 +55,10 @@ ActiveRecord::Schema.define(version: 2020_10_19_085118) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
