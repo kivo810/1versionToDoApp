@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    @tags = Tag.where(:user_id => current_user.id).includes(:user)
   end
 
   # GET /tags/1
@@ -69,6 +69,6 @@ class TagsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tag_params
-      params.require(:tag).permit(:title, :color)
+      params.require(:tag).permit(:title, :color, :user_id)
     end
 end
