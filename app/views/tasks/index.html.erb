@@ -30,7 +30,7 @@
       <td><%= task.updated_at.strftime('%H:%M %n %d.%m.%Y')  if task.updated_at != nil%></td>
 
       <% if !(task.category.nil?) %>
-        <td><%= task.category.color %></td>
+        <td bgcolor="<%= task.category.color %>"><%= task.category.title %></td>
       <% else %>
         <td>NONE</td>
       <% end %>

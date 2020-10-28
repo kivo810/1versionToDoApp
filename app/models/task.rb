@@ -6,4 +6,6 @@ class Task < ApplicationRecord
   has_many :tags, :through => :tag_associations
 
   validates :title, presence: true
+
+  scope :pending, -> { where( is_done: false) }
 end
