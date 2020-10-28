@@ -2,6 +2,11 @@
 <h1>TASKS</h1>
 </p>
 
+<div>
+  <%= link_to 'Pending', pending_tasks_path %>
+  <%= link_to 'Completed', completed_tasks_path %>
+</div>
+
 <%= will_paginate @tasks %>
 
 <table>

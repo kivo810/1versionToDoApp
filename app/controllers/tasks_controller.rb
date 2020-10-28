@@ -12,6 +12,13 @@ class TasksController < ApplicationController
     render "index"
   end
 
+  # GET /tasks/pending
+  def completed
+    @tasks = Task.completed.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
+    render "index"
+  end
+
+
   def new
     @task = Task.new
   end

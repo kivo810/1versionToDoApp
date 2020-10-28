@@ -8,4 +8,5 @@ class Task < ApplicationRecord
   validates :title, presence: true
 
   scope :pending, -> { where( is_done: false) }
+  scope :completed, -> { where( is_done: true) }
 end
