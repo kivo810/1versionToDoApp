@@ -9,4 +9,7 @@ class Task < ApplicationRecord
 
   scope :pending, -> { where( is_done: false) }
   scope :completed, -> { where( is_done: true) }
+
+  scope :by_category, -> (category) { where("category_id = ?", category)}
+
 end

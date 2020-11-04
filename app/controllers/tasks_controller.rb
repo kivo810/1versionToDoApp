@@ -12,12 +12,17 @@ class TasksController < ApplicationController
     render "index"
   end
 
-  # GET /tasks/pending
+  # GET /tasks/completed
   def completed
     @tasks = Task.completed.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
     render "index"
   end
 
+  def by_category
+    @category = Category.find(params[:category_id])
+    @tasks = Task.by_category(@category.id).where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
+    render "index"
+  end
 
   def new
     @task = Task.new
@@ -80,5 +85,4 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:title, :note, :is_done, :deadline_at, :category_id, :tag_ids => [])
     end
-
 end
