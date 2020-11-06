@@ -4,6 +4,16 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+    @search = params[:search]
+    p "dsaodoiroirewjoirjewuroiwuroiewuroiwruoiewruewoiruwroieureworuo"
+    p @search
+    if @search.present?
+      @category = @search["category"]
+      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      p Task.where(:category_id => @category)
+      p @category
+      @tasks = Task.where(:category_id =>  @category, :user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+    end
   end
 
   # GET /tasks/pending

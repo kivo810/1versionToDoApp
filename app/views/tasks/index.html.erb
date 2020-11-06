@@ -59,3 +59,8 @@
   <%= link_to "New Task", new_task_path %>
 </button>
 <button type="button"><%= link_to 'Settings', settings_path %></button>
+
+<%= simple_form_for :search, url: tasks_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+  <%= f.input :category, required: false, collection: Category.where(:user_id => current_user.id)%>
+  <%= f.submit "Search" %>
+<% end %>
