@@ -30,20 +30,26 @@
       <td><%= task.title %></td>
       <td><%= task.is_done %></td>
       <td><%= task.note%></td>
-      <td><%= task.deadline_at.strftime('%H:%M %n %d.%m.%Y') if task.deadline_at != nil %></td>
+
+      <% if !(task.deadline_at.nil?) %>
+        <td><%= task.deadline_at.strftime('%H:%M %n %d.%m.%Y') %>
+      <% else %>
+        <td></td>
+      <% end %>
+
       <td><%= task.created_at.strftime('%H:%M %n %d.%m.%Y')  if task.created_at != nil%></td>
       <td><%= task.updated_at.strftime('%H:%M %n %d.%m.%Y')  if task.updated_at != nil%></td>
 
       <% if !(task.category.nil?) %>
         <td bgcolor="<%= task.category.color %>"><%= task.category.title %></td>
       <% else %>
-        <td>NONE</td>
+        <td></td>
       <% end %>
 
       <% if task.tags.any? %>
         <td><%= task.tags.map{|tag| tag.title}.join(", ") %> </td>
       <% else %>
-        <td>NONE</td>
+        <td></td>
       <% end %>
 
       <td><%= link_to 'Show', task %></td>

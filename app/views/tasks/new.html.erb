@@ -5,7 +5,7 @@
 
   <%= f.input :note %>
 
-  <%= f.input :deadline_at %>
+  <%= f.input :deadline_at, required: false, include_blank: true%>
 
   <%= f.association :category, required: false, collection: Category.where(:user_id => current_user.id) %>
 
