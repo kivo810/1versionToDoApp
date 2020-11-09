@@ -1,8 +1,0 @@
-<%= simple_form_for @task do |f| %>
-
-  <%= f.association :category, required: false, collection: Category.where(:user_id => current_user.id) %>
-
-  <%= f.button :submit %>
-  <%= f.button :button, "Reset", type: :reset %>
-
-<% end %>

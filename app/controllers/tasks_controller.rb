@@ -9,10 +9,15 @@ class TasksController < ApplicationController
     p @search
     if @search.present?
       @category = @search["category"]
-      p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-      p Task.where(:category_id => @category)
-      p @category
-      @tasks = Task.where(:category_id =>  @category, :user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+      # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      # p Task.where(:category_id => @category)
+      # p @category
+      # p "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      # p @search["tags"]
+      # @tasks = Task.where(:category_id =>  @category, :user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+      @tasks = Task.by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+      p "taskstaskstasks"
+      p @tasks
     end
   end
 

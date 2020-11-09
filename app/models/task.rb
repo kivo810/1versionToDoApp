@@ -11,5 +11,5 @@ class Task < ApplicationRecord
   scope :completed, -> { where( is_done: true) }
 
   scope :by_category, -> (category) { where("category_id = ?", category)}
-
+  scope :by_tags, -> (tags) { where(:tags => tags)}
 end

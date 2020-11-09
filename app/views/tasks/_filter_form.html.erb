@@ -1,0 +1,5 @@
+<%= simple_form_for :search, url: tasks_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+  <%= f.input :category, required: false, selected: nil , collection: Category.where(:user_id => current_user.id)%>
+  <%#= f.input :tags, required: false, collection: Tag.where(:user_id => current_user.id), as: :check_boxes%>
+  <%= f.submit "Search" %>
+<% end %>

@@ -49,7 +49,6 @@
       <td><%= link_to 'Show', task %></td>
       <td><%= link_to 'Edit', edit_task_path(task) %></td>
       <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
     </tr>
   <% end %>
   </tbody>
@@ -60,7 +59,10 @@
 </button>
 <button type="button"><%= link_to 'Settings', settings_path %></button>
 
-<%= simple_form_for :search, url: tasks_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-  <%= f.input :category, required: false, collection: Category.where(:user_id => current_user.id)%>
-  <%= f.submit "Search" %>
-<% end %>
+<%= render 'filter_form', task: @task %>
+
+<%#= simple_form_for :search, url: tasks_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+  <%#= f.input :category, required: false, collection: Category.where(:user_id => current_user.id)%>
+  <%#= f.input :tags, required: false, collection: Tag.where(:user_id => current_user.id), as: :check_boxes%>
+  <%#= f.submit "Search" %>
+<%# end %>
