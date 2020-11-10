@@ -6,18 +6,30 @@ class TasksController < ApplicationController
     @tasks = Task.where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
     @search = params[:search]
     p "dsaodoiroirewjoirjewuroiwuroiewuroiwruoiewruewoiruwroieureworuo"
-    p @search
+    # p @search
     if @search.present?
       @category = @search["category"]
+      @tags = @search["tags"]
+      # p "cattttt"
+      # p @category
+      # p "tagsssss"
+      # p @tags
       # p "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       # p Task.where(:category_id => @category)
       # p @category
       # p "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       # p @search["tags"]
       # @tasks = Task.where(:category_id =>  @category, :user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
-      @tasks = Task.by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
-      p "taskstaskstasks"
-      p @tasks
+      # @tasks = Task.by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+      # p "taskstaskstasks"
+      if @category != "" && @tags != ""
+        @tasks = Task.by_tags(@tags).by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+      elsif @category != "" && @tags == ""
+        @tasks = Task.by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+      else
+        @tasks = Task.by_tags(@tags).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+      end
+      # p @tasks
     end
   end
 
