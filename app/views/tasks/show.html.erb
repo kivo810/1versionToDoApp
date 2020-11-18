@@ -18,5 +18,21 @@
   <%= @task.deadline_at.strftime('%H:%M %d.%m.%Y') %>
 </p>
 
+
+<% unless @task.category.nil? %>
+  <p>
+    <strong>Category:</strong>
+    <%=  @task.category.title  %>
+  </p>
+<% end %>
+
+<% unless @task.tags.nil? %>
+  <p>
+    <strong>Tags:</strong>
+    <%=  @task.tags.map{|tag| tag.title}.join(", ")  %>
+  </p>
+<% end %>
+
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
