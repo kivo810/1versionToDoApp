@@ -7,7 +7,8 @@
 
 <p>
   <strong>Color:</strong>
-  <%= @category.color %>
+  <input type="color" id="head" name="head"
+         value="<%= @category.color %>">
 </p>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
