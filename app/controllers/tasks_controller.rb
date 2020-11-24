@@ -10,6 +10,7 @@ class TasksController < ApplicationController
     if @search.present?
       @category = @search["category"]
       @tags = @search["tags"]
+      @target_name = @search["name"]
       # p "cattttt"
       # p @category
       # p "tagsssss"
@@ -22,12 +23,17 @@ class TasksController < ApplicationController
       # @tasks = Task.where(:category_id =>  @category, :user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
       # @tasks = Task.by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
       # p "taskstaskstasks"
-      if @category != "" && @tags != ""
-        @tasks = Task.by_tags(@tags).by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
-      elsif @category != "" && @tags == ""
-        @tasks = Task.by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+      if @target_name != ""
+        @tasks = Task.where(:user_id => current_user.id).where('title LIKE :search OR note LIKE :search', search: "%#{@target_name}%")
+                     .order("deadline_at desc").paginate(page: params[:page], per_page: 5)
       else
-        @tasks = Task.by_tags(@tags).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+        if @category != "" && @tags != ""
+          @tasks = Task.by_tags(@tags).by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+        elsif @category != "" && @tags == ""
+          @tasks = Task.by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+        else
+          @tasks = Task.by_tags(@tags).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+        end
       end
       # p @tasks
     end
