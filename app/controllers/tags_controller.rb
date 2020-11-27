@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.where(:user_id => current_user.id).includes(:user)
+    @tags = Tag.where(:user_id => current_user.id)
   end
 
   # GET /tags/1
