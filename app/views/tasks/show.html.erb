@@ -1,44 +1,67 @@
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+<!--<p>-->
+<!--  <strong>Title:</strong>-->
+  <%#= @task.title %>
+<!--</p>-->
 
-<p>
-  <strong>Is done:</strong>
-  <%= @task.is_done %>
-</p>
-
-
-<% unless @task.note == "" %>
-  <p>
-    <strong>Note:</strong>
-    <%=  @task.note  %>
-  </p>
-<% end %>
+<!--<p>-->
+<!--  <strong>Is done:</strong>-->
+  <%#= @task.is_done %>
+<!--</p>-->
 
 
-<% unless @task.deadline_at.nil? %>
-  <p>
-    <strong>Deadline at:</strong>
-    <%= @task.deadline_at.strftime('%H:%M %d.%m.%Y') %>
-  </p>
-<% end %>
+<%# unless @task.note == "" %>
+<!--  <p>-->
+<!--    <strong>Note:</strong>-->
+    <%#=  @task.note  %>
+<!--  </p>-->
+<%# end %>
 
 
-<% unless @task.category.nil? %>
-  <p>
-    <strong>Category:</strong>
-    <%=  @task.category.title  %>
-  </p>
-<% end %>
-
-<% unless @task.tags.size > 0%>
-  <p>
-    <strong>Tags:</strong>
-    <%=  @task.tags.map{|tag| tag.title}.join(", ")  %>
-  </p>
-<% end %>
+<%# unless @task.deadline_at.nil? %>
+<!--  <p>-->
+<!--    <strong>Deadline at:</strong>-->
+    <%#= @task.deadline_at.strftime('%H:%M %d.%m.%Y') %>
+<!--  </p>-->
+<%# end %>
 
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%# unless @task.category.nil? %>
+<!--  <p>-->
+<!--    <strong>Category:</strong>-->
+    <%#=  @task.category.title  %>
+<!--  </p>-->
+<%# end %>
+
+<%# if @task.tags.size > 0%>
+<!--  <p>-->
+<!--    <strong>Tags:</strong>-->
+    <%#=  @task.tags.map{|tag| tag.title}.join(", ")  %>
+<!--  </p>-->
+<%# end %>
+
+
+<!--<%#= link_to 'Edit', edit_task_path(@task) %> |-->
+<%#= link_to 'Back', tasks_path %>
+
+<div class="card bg-light mb-3 mx-auto" style="max-width: 20rem;">
+  <div class="card-header bg-dark text-white font-weight-light ">Category - <%= @task.category.title if @task.category %></div>
+  <div class="card-body font-weight-light">
+    <h5 class="card-title"><%= @task.title %><small class="text-muted"><%= @task.deadline_at ? "| Deadline at #{(l @task.deadline_at, format: '%d.%m.%Y')}" : nil%></small> </h5>
+    <p class="card-text"><%= @task.note %></p>
+    <p class="card-text font-weight-bold">Tags: <small><%= @tags %></small></p>
+  </div>
+  <div class="card-footer bg-transparent <%= @task.is_done ? "border-success" : "border-danger" %>">
+    <p class="card-text">
+      <small class="text-muted">
+        Is done -       <%= !@task.is_done.nil? || @task.is_done ? "ano" : "nie"%><br>
+        Created at      <%= l @task.created_at, format: '%H:%M %d.%m.%Y'%><br>
+        Last updated at <%= l @task.updated_at, format: '%H:%M %d.%m.%Y'%>
+      </small>
+    </p>
+  </div>
+</div>
+
+<div class="text-center mt-1">
+  <%= link_to 'Edit', edit_task_path(@task) %> |
+  <%= link_to 'Back', tasks_path %>
+</div>

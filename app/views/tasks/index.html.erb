@@ -88,9 +88,8 @@
 
 <p>
 <div align="center">
-  <button type="button" class="btn btn-light">
-    <%= link_to "New Task", new_task_path %>
-  </button>
+  <a type="button" class="btn btn-outline-warning" href=<%= new_task_path %>>New Task
+  </a>
   <button type="button" class="btn btn-warning">
     <%= link_to 'Settings', settings_path %>
   </button>
@@ -104,7 +103,12 @@
   <%#= link_to 'Settings', settings_path %>
 <!--</button>-->
 
-<%= render 'filter_form', task: @task %>
+<p>
+  <%= render 'filter_form', task: @task %>
+</p>
+
+
+
 
 <%#= simple_form_for :search, url: tasks_path, method: "GET", html: { class: 'form-inline' } do |f| %>
   <%#= f.input :category, required: false, collection: Category.where(:user_id => current_user.id)%>

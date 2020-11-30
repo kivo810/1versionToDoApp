@@ -1,4 +1,4 @@
-<%= simple_form_for @task do |f| %>
+<%= simple_form_for @task, :html => { :class => 'text-left font-weight-light' } do |f| %>
   <%= f.input :title, required: true %>
 
   <%= f.input :is_done %>
