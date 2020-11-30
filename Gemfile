@@ -30,6 +30,10 @@ gem 'devise'
 gem 'simple_form'
 gem 'will_paginate'
 
+gem 'bootstrap_form'
+gem 'bootstrap4-kaminari-views'
+gem 'kaminari'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
