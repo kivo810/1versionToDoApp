@@ -8,15 +8,21 @@
   <%= @task.is_done %>
 </p>
 
-<p>
-  <strong>Note:</strong>
-  <%= @task.note %>
-</p>
 
-<p>
-  <strong>Deadline at:</strong>
-  <%= @task.deadline_at.strftime('%H:%M %d.%m.%Y') %>
-</p>
+<% unless @task.note == "" %>
+  <p>
+    <strong>Note:</strong>
+    <%=  @task.note  %>
+  </p>
+<% end %>
+
+
+<% unless @task.deadline_at.nil? %>
+  <p>
+    <strong>Deadline at:</strong>
+    <%= @task.deadline_at.strftime('%H:%M %d.%m.%Y') %>
+  </p>
+<% end %>
 
 
 <% unless @task.category.nil? %>
@@ -26,7 +32,7 @@
   </p>
 <% end %>
 
-<% unless @task.tags.nil? %>
+<% unless @task.tags.size > 0%>
   <p>
     <strong>Tags:</strong>
     <%=  @task.tags.map{|tag| tag.title}.join(", ")  %>

@@ -1,5 +1,15 @@
 <h1>New Task</h1>
 
-<%= render 'form', task: @task %>
+<%#= render 'form', task: @task %>
+
+<%#= link_to 'Back', tasks_path %>
+
+
+<div class="col-lg-6 mx-auto mt-4 text-center pt-1 bg-light">
+  <h3>
+    <small class="text-muted font-weight-bold">N</small>ew task
+  </h3>
+  <%= render 'form', task: @task %>
+</div>
 
 <%= link_to 'Back', tasks_path %>
