@@ -4,8 +4,10 @@
 
 <p>
 <div align="center">
-  <button type="button" class="btn btn-light"><%= link_to 'Pending', pending_tasks_path %> </button>
-  <button type="button" class="btn btn-light"><%= link_to 'Completed', completed_tasks_path %></button>
+  <a type="button" class="btn btn-outline-primary" href=<%= pending_tasks_path %>>Pending</a>
+  <a type="button" class="btn btn-warning" href=<%= new_task_path %>>New Task
+  </a>
+  <a type="button" class="btn btn-outline-primary" href=<%= completed_tasks_path %>>Completed</a>
   <%#= link_to 'Pending', pending_tasks_path %>
   <%#= link_to 'Completed', completed_tasks_path %>
 </div>
@@ -25,8 +27,8 @@
 
 <div class="table-responsive-lg">
   <table class="table">
-    <thead class="thead-light">
-    <tr>
+    <thead class="thead-dark">
+    <tr align="center">
       <th>Title</th>
       <th>Is done</th>
       <th>Note</th>
@@ -40,11 +42,16 @@
     </tr>
     </thead>
 
-    <tbody>
+    <tbody class="table-bordered">
     <% @tasks.each do |task| %>
-      <tr>
+      <tr align="center">
         <td><%= task.title %></td>
-        <td><%= task.is_done %></td>
+        <% if task.is_done == true %>
+          <td bgcolor="green"></td>
+        <% else %>
+          <td bgcolor="red"></td>
+        <% end %>
+<!--        <td><%#= task.is_done %></td>-->
         <td><%= task.note%></td>
 
         <% if !(task.deadline_at.nil?) %>
@@ -90,9 +97,8 @@
 <div align="center">
   <a type="button" class="btn btn-outline-warning" href=<%= new_task_path %>>New Task
   </a>
-  <button type="button" class="btn btn-warning">
-    <%= link_to 'Settings', settings_path %>
-  </button>
+  <a type="button" class="btn btn-warning" href=<%= settings_path %>>Settings
+  </a>
 </div>
 </p>
 

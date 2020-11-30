@@ -1,6 +1,19 @@
-<p>
-  <br>
-  <button type="button"><%= link_to "TAGS", tags_path %></button>
-  <button type="button"><%= link_to "CATEGORIES", categories_path %></button>
-  <button type="button"><%= link_to "TASKS", tasks_path %></button>
-</p>
+<!--<p>-->
+<!--  <br>-->
+<!--  <button type="button"><%#= link_to "TAGS", tags_path %></button>-->
+<!--  <button type="button"><%#= link_to "CATEGORIES", categories_path %></button>-->
+<!--  <button type="button"><%#= link_to "TASKS", tasks_path %></button>-->
+<!--</p>-->
+
+<div class="mx-auto mt-5 col-sm-12 col-lg-6">
+  <a href="<%= categories_path %>" style="text-decoration: none">
+    <button type="button" class="btn btn-dark btn-lg btn-block font-weight-light border-secondary mb-2" >
+      <span class="text-secondary font-weight-normal"></span>Manage categories
+    </button>
+  </a>
+  <a href="<%= tags_path %>" style="text-decoration: none">
+    <button type="button" class="btn btn-dark btn-lg btn-block font-weight-light border-secondary">
+      <span class="text-secondary font-weight-normal"></span>Manage Tags
+    </button>
+  </a>
+</div>

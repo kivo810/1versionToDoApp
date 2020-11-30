@@ -1,15 +1,30 @@
 <!--<p id="notice"><%#= notice %></p>-->
 
-<p>
-  <strong>Title:</strong>
-  <%= @category.title %>
-</p>
+<!--<p>-->
+<!--  <strong>Title:</strong>-->
+  <%#= @category.title %>
+<!--</p>-->
 
-<p>
-  <strong>Color:</strong>
-  <input type="color" id="head" name="head"
-         value="<%= @category.color %>">
-</p>
+<!--<p>-->
+<!--  <strong>Color:</strong>-->
+<!--  <input type="color" id="head" name="head"-->
+<!--         value="<%#= @category.color %>">-->
+<!--  <span color=<%#= @category.color %>></span>-->
+<!--</p>-->
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<!--<%#= link_to 'Edit', edit_category_path(@category) %> |-->
+<%#= link_to 'Back', categories_path %>
+
+<div class="card text-center border-secondary mb-2">
+  <h5 class="card-header text-white" style="background-color: <%= @category.color %>;"><%= @category.title %></h5>
+  <div class="card-body">
+    <p>
+      Id: <span class="font-weight-bold"><%= @category.id %></span><br>
+      Color: <span style="color:<%= @category.color %>"><%= @category.color %><br></span>
+      <small>Created at <%= l @category.created_at, format: '%d.%m.%Y' %></small> |
+      <small>Updated at <%= l @category.updated_at, format: '%H:%M %d.%m.%Y'%></small>
+    </p>
+    <%= link_to 'Edit', edit_category_path(@category) %> |
+    <%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
