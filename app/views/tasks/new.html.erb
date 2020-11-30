@@ -1,4 +1,6 @@
-<h1>New Task</h1>
+<p>
+<h1 align="center">New Task</h1>
+</p>
 
 <%#= render 'form', task: @task %>
 
@@ -6,10 +8,5 @@
 
 
 <div class="col-lg-6 mx-auto mt-4 text-center pt-1 bg-light">
-  <h3>
-    <small class="text-muted font-weight-bold">N</small>ew task
-  </h3>
   <%= render 'form', task: @task %>
 </div>
-
-<%= link_to 'Back', tasks_path %>

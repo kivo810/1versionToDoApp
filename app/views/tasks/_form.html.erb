@@ -1,4 +1,4 @@
-<%= simple_form_for @task, :html => { :class => 'text-left font-weight-light' } do |f| %>
+<%= simple_form_for @task, :html => { :class => 'text-center font-weight-light' } do |f| %>
   <%= f.input :title, required: true %>
 
   <%= f.input :is_done %>
@@ -11,7 +11,8 @@
 
   <%= f.association :tags, as: :check_boxes, collection: Tag.where(:user_id => current_user.id) %>
 
-  <%= f.button :submit %>
-  <%= f.button :button, "Reset", type: :reset %>
+  <%= f.button :submit, class: "btn-primary" %>
+  <%= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
+  <%= link_to "Cancel", :back, {:class=>"btn btn-outline-primary"} %>
 
 <% end %>

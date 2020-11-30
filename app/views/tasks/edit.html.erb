@@ -1,6 +1,8 @@
-<h1>Editing Task</h1>
+<p>
+<h1 align="center">Editing Task</h1>
+</p>
 
-<%= render 'form', task: @task %>
+<div class="col-lg-6 mx-auto mt-4 text-center pt-1 bg-light">
+  <%= render 'form', task: @task %>
+</div>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
