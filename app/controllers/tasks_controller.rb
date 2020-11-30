@@ -3,10 +3,10 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = Task.where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+    @tasks = Task.where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 8)
                  .includes(:tags).includes(:category).includes(:tag_associations)
     @search = params[:search]
-    p "dsaodoiroirewjoirjewuroiwuroiewuroiwruoiewruewoiruwroieureworuo"
+    # p "dsaodoiroirewjoirjewuroiwuroiewuroiwruoiewruewoiruwroieureworuo"
     # p @search
     if @search.present?
       @category = @search["category"]
