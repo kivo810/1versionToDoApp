@@ -18,16 +18,16 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">Hidden brand</a>
+    <a class="navbar-brand" href=<%= root_path %>>ToDoAppka</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href=<%= tasks_path %>>Tasks <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href=<%= new_task_path %>>New Task</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Disabled</a>
+        <a class="nav-link" href=<%= settings_path %>>Settings</a>
       </li>
     </ul>
 <!--    <form class="form-inline my-2 my-lg-0">-->

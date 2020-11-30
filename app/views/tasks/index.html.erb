@@ -1,11 +1,25 @@
 <p>
-<h1><%=link_to 'TASKS', root_path %></h1>
+<h1 align="center"><%=link_to 'TASKS', root_path %></h1>
 </p>
 
-<div>
-  <%= link_to 'Pending', pending_tasks_path %>
-  <%= link_to 'Completed', completed_tasks_path %>
+<p>
+<div align="center">
+  <button type="button" class="btn btn-light"><%= link_to 'Pending', pending_tasks_path %> </button>
+  <button type="button" class="btn btn-light"><%= link_to 'Completed', completed_tasks_path %></button>
+  <%#= link_to 'Pending', pending_tasks_path %>
+  <%#= link_to 'Completed', completed_tasks_path %>
 </div>
+</p>
+
+
+<!--<p>-->
+<!--<h1><%#=link_to 'TASKS', root_path %></h1>-->
+<!--</p>-->
+
+<!--<div>-->
+  <%#= link_to 'Pending', pending_tasks_path %>
+  <%#= link_to 'Completed', completed_tasks_path %>
+<!--</div>-->
 
 <%#= will_paginate @tasks %>
 
@@ -72,11 +86,23 @@
 </div>
 
 
+<p>
+<div align="center">
+  <button type="button" class="btn btn-light">
+    <%= link_to "New Task", new_task_path %>
+  </button>
+  <button type="button" class="btn btn-warning">
+    <%= link_to 'Settings', settings_path %>
+  </button>
+</div>
+</p>
 
-<button type="button" class="btn btn-light">
-  <%= link_to "New Task", new_task_path %>
-</button>
-<button type="button" class="btn btn-warning"><%= link_to 'Settings', settings_path %></button>
+<!--<button type="button" class="btn btn-light">-->
+  <%#= link_to "New Task", new_task_path %>
+<!--</button>-->
+<!--<button type="button" class="btn btn-warning">-->
+  <%#= link_to 'Settings', settings_path %>
+<!--</button>-->
 
 <%= render 'filter_form', task: @task %>
 
