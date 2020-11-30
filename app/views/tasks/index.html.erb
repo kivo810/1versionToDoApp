@@ -68,10 +68,10 @@
 <%= will_paginate @tasks %>
 
 
-<button>
+<button type="button" class="btn btn-light">
   <%= link_to "New Task", new_task_path %>
 </button>
-<button type="button"><%= link_to 'Settings', settings_path %></button>
+<button type="button" class="btn btn-warning"><%= link_to 'Settings', settings_path %></button>
 
 <%= render 'filter_form', task: @task %>
 

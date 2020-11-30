@@ -46,20 +46,22 @@ class TasksController < ApplicationController
   # GET /tasks/pending
   def pending
     @tasks = Task.pending.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
+                 .includes(:tags).includes(:category).includes(:tag_associations)
     render "index"
   end
 
   # GET /tasks/completed
   def completed
     @tasks = Task.completed.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
+                 .includes(:tags).includes(:category).includes(:tag_associations)
     render "index"
   end
 
-  def by_category
-    @category = Category.find(params[:category_id])
-    @tasks = Task.by_category(@category.id).where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
-    render "index"
-  end
+  # def by_category
+  #   @category = Category.find(params[:category_id])
+  #   @tasks = Task.by_category(@category.id).where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
+  #   render "index"
+  # end
 
   def new
     @task = Task.new

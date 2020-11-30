@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     collection do
       get :pending
       get :completed
-      get :by_category
     end
   end
 
