@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.where(:user_id => current_user.id)
+    @categories = Category.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 9)
   end
 
   # GET /categories/1

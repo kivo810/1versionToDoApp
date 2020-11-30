@@ -55,6 +55,10 @@
     <% end %>
   </div>
 
+  <div class="container pagination justify-content-center" >
+    <%= paginate @tags, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+  </div>
+
 </div>
 <%#= link_to 'New tag', new_tag_path %>
 <a type="button" class="btn btn-outline-warning" href=<%= new_tag_path %>>New tag

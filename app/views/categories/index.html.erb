@@ -56,6 +56,10 @@
     <% end %>
   </div>
 
+  <div class="container pagination justify-content-center" >
+    <%= paginate @categories, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+  </div>
+
 </div>
 <%#= link_to 'New Category', new_category_path %>
 <a type="button" class="btn btn-outline-warning" href=<%= new_category_path %>>New Category

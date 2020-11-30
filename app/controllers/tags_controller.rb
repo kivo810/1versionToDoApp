@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.where(:user_id => current_user.id)
+    @tags = Tag.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 9)
   end
 
   # GET /tags/1
