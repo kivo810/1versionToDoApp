@@ -25,6 +25,7 @@
       <small>Updated at <%= l @category.updated_at, format: '%H:%M %d.%m.%Y'%></small>
     </p>
     <%= link_to 'Edit', edit_category_path(@category) %> |
+    <%= link_to 'Back', _back_url %> |
     <%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 </div>

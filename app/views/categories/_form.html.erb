@@ -9,7 +9,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
-    <%= f.button :button, "Reset",  type: :reset %>
+    <%= f.button :submit, class: "btn-primary"%>
+    <%= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
+    <%= link_to "Cancel", :back, {:class=>"btn btn-outline-primary"} %>
   </div>
 <% end %>

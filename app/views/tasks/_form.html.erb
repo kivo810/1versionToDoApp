@@ -11,8 +11,13 @@
 
   <%= f.association :tags, as: :check_boxes, collection: Tag.where(:user_id => current_user.id) %>
 
-  <%= f.button :submit, class: "btn-primary" %>
-  <%= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
-  <%= link_to "Cancel", :back, {:class=>"btn btn-outline-primary"} %>
+  <%#= f.button :submit, class: "btn-primary" %>
+  <%#= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
+  <%#= link_to "Cancel", :back, {:class=>"btn btn-outline-primary"} %>
 
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn-primary"%>
+    <%= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
+    <%= link_to "Cancel", :back, {:class=>"btn btn-outline-primary"} %>
+  </div>
 <% end %>

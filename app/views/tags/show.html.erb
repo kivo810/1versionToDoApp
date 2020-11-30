@@ -24,6 +24,7 @@
       <small>Updated at <%= l @tag.updated_at, format: '%H:%M %d.%m.%Y'%></small>
     </p>
     <%= link_to 'Edit', edit_tag_path(@tag) %> |
+    <%= link_to 'Back', _back_url %> |
     <%= link_to 'Destroy', @tag, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 </div>
