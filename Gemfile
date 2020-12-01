@@ -35,6 +35,8 @@ gem 'bootstrap_form'
 gem 'bootstrap4-kaminari-views'
 gem 'kaminari'
 
+gem 'font_awesome5_rails'
+gem "font-awesome-rails"
 gem "bootswatch"
 gem "jquery-rails"
 
