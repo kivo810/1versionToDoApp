@@ -34,6 +34,9 @@ gem 'bootstrap_form'
 gem 'bootstrap4-kaminari-views'
 gem 'kaminari'
 
+gem "bootswatch"
+gem "jquery-rails"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
