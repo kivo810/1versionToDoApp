@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <%= simple_form_for @task, :html => { :class => 'text-left font-weight-light' } do |f| %>
+  <%= simple_form_for @task, wrapper: :horizontal_form, :html => { :class => 'text-left font-weight-light' } do |f| %>
     <div class="form-inputs">
       <%= f.input :title, required: true %>
 
@@ -11,7 +11,7 @@
 
       <%= f.association :category, required: false, collection: Category.where(:user_id => current_user.id) %>
 
-      <%= f.association :tags, as: :check_boxes, collection: Tag.where(:user_id => current_user.id) %>
+      <%= f.association :tags, as: :check_boxes, collection: Tag.where(:user_id => current_user.id), wrapper: :horizontal_collection_inline %>
     </div>
 
     <%#= f.button :submit, class: "btn-primary" %>
