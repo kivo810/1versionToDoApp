@@ -25,66 +25,71 @@
 
 <%#= will_paginate @tasks %>
 
-<div class="table-responsive-lg">
-  <table class="table">
-    <thead class="thead-dark">
-    <tr align="center">
-      <th>Title</th>
-      <th>Is done</th>
-      <th>Note</th>
-      <th>Deadline At</th>
-      <th>Created At</th>
-      <th>Updated At</th>
-      <th>Category Title</th>
-      <th>Category Color</th>
-      <th>Tags</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
-
-    <tbody class="table-bordered">
-    <% @tasks.each do |task| %>
+<div class="container-fluid">
+  <div class="table-responsive-lg">
+    <table class="table">
+      <thead class="thead-dark">
       <tr align="center">
-        <td><%= task.title %></td>
-        <% if task.is_done == true %>
-          <td><%= fa_icon "baby", text: "BB", class: 'mx-2', size: '3x' %></td>
-        <% else %>
-          <td bgcolor="red"></td>
-        <% end %>
-<!--        <td><%#= task.is_done %></td>-->
-        <td><%= task.note%></td>
-
-        <% if !(task.deadline_at.nil?) %>
-          <td><%= task.deadline_at.strftime('%H:%M %n %d.%m.%Y') %>
-        <% else %>
-          <td></td>
-        <% end %>
-
-        <td><%= task.created_at.strftime('%H:%M %n %d.%m.%Y')  if task.created_at != nil%></td>
-        <td><%= task.updated_at.strftime('%H:%M %n %d.%m.%Y')  if task.updated_at != nil%></td>
-
-        <% if !(task.category.nil?) %>
-          <td><%= task.category.title %></td>
-          <td bgcolor="<%= task.category.color %>"></td>
-        <% else %>
-          <td></td>
-          <td></td>
-        <% end %>
-
-        <% if task.tags.any? %>
-          <td><%= task.tags.map{|tag| tag.title}.join(", ") %> </td>
-        <% else %>
-          <td></td>
-        <% end %>
-
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Is done</th>
+        <th>Note</th>
+        <th>Deadline At</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+        <th>Category Title</th>
+        <th>Category Color</th>
+        <th>Tags</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody class="table-bordered">
+      <% @tasks.each do |task| %>
+        <tr align="center">
+          <td><%= task.title %></td>
+          <% if task.is_done == true %>
+<!--            <td><%#= fa_icon "check_square", class: 'mx-2', size: '2x' %></td>-->
+            <td><i class="fas fa-check-square"></i></td>
+          <% else %>
+<!--            <td bgcolor="red"></td>-->
+            <td><i class="fas fa-times-circle"></i></td>
+          <% end %>
+          <!--        <td><%#= task.is_done %></td>-->
+          <td><%= task.note%></td>
+
+          <% if !(task.deadline_at.nil?) %>
+            <td><%= task.deadline_at.strftime('%H:%M %n %d.%m.%Y') %>
+          <% else %>
+            <td></td>
+          <% end %>
+
+          <td><%= task.created_at.strftime('%H:%M %n %d.%m.%Y')  if task.created_at != nil%></td>
+          <td><%= task.updated_at.strftime('%H:%M %n %d.%m.%Y')  if task.updated_at != nil%></td>
+
+          <% if !(task.category.nil?) %>
+            <td><%= task.category.title %></td>
+            <td bgcolor="<%= task.category.color %>"></td>
+          <% else %>
+            <td></td>
+            <td></td>
+          <% end %>
+
+          <% if task.tags.any? %>
+            <td><%= task.tags.map{|tag| tag.title}.join(", ") %> </td>
+          <% else %>
+            <td></td>
+          <% end %>
+
+          <td><%= link_to 'Show', task %></td>
+          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
+
 
 <%#= will_paginate @tasks %>
 

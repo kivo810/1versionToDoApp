@@ -1,25 +1,27 @@
-<%= simple_form_for @task, :html => { :class => 'text-center font-weight-light' } do |f| %>
-  <div class="form-inputs">
-    <%= f.input :title, required: true %>
+<div class="container-fluid">
+  <%= simple_form_for @task, :html => { :class => 'text-left font-weight-light' } do |f| %>
+    <div class="form-inputs">
+      <%= f.input :title, required: true %>
 
-    <%= f.input :is_done %>
+      <%= f.input :is_done %>
 
-    <%= f.input :note %>
+      <%= f.input :note %>
 
-    <%= f.input :deadline_at, required: false%>
+      <%= f.input :deadline_at, required: false%>
 
-    <%= f.association :category, required: false, collection: Category.where(:user_id => current_user.id) %>
+      <%= f.association :category, required: false, collection: Category.where(:user_id => current_user.id) %>
 
-    <%= f.association :tags, as: :check_boxes, collection: Tag.where(:user_id => current_user.id) %>
-  </div>
+      <%= f.association :tags, as: :check_boxes, collection: Tag.where(:user_id => current_user.id) %>
+    </div>
 
-  <%#= f.button :submit, class: "btn-primary" %>
-  <%#= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
-  <%#= link_to "Cancel", :back, {:class=>"btn btn-outline-primary"} %>
+    <%#= f.button :submit, class: "btn-primary" %>
+    <%#= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
+    <%#= link_to "Cancel", :back, {:class=>"btn btn-outline-primary"} %>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn-primary"%>
-    <%= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
-    <%= link_to "Cancel", :back, {:class=>"btn btn-outline-primary"} %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn-primary"%>
+      <%= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
+      <%= link_to "Cancel", :back, {:class=>"btn btn-outline-primary"} %>
+    </div>
+  <% end %>
+</div>
