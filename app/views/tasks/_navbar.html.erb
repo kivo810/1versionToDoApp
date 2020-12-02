@@ -53,12 +53,12 @@
     <a>
       <% if user_signed_in? %>
         Logged in as   <strong><%= current_user.username %> | </strong>
-        <a type="button" class="btn btn-dark" href=<%= edit_user_registration_path %>>Edit Profile</a>
+        <a type="button" class="btn btn-outline-primary" href=<%= edit_user_registration_path %>>Edit Profile</a>
         |
-        <button type="button" class="btn btn-light"><%= link_to "Logout", destroy_user_session_path, method: :delete  %></button>
+        <button type="button" class="btn btn-outline-primary"><%= link_to "Logout", destroy_user_session_path, method: :delete  %></button>
       <% else %>
-        <a type="button" class="btn btn-dark" href=<%= new_user_registration_path %>>Sign up</a> |
-        <a type="button" class="btn btn-dark" href=<%= new_user_session_path %>>Login</a>
+        <a type="button" class="btn btn-outline-primary" href=<%= new_user_registration_path %>>Sign up</a> |
+        <a type="button" class="btn btn-outline-primary" href=<%= new_user_session_path %>>Login</a>
       <% end %>
     </a>
   </div>

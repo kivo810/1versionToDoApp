@@ -34,7 +34,7 @@ class TasksController < ApplicationController
         elsif @category != "" && @tags == ""
           @tasks = Task.by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 8)
                        .includes(:tags).includes(:category).includes(:tag_associations)
-        else
+        elsif @category == "" && @tags != ""
           @tasks = Task.by_tags(@tags).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 8)
                        .includes(:tags).includes(:category).includes(:tag_associations)
         end

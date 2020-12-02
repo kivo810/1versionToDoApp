@@ -3,6 +3,6 @@
                       html: { class: "form-inline" } do |f| %>
     <%= f.input :category, prompt: '--SELECT CATEGORY--', required: false, selected: @category, include_blank: true , collection: Category.where(:user_id => current_user.id)%>
     <%= f.input :tags, prompt: '--SELECT TAG--', required: false, selected: @tags, include_blank: true,  collection: Tag.where(:user_id => current_user.id)%>
-    <%= f.input :name, placeholder: 'Text', input_html: {value: ""} %>
+    <%= f.input :name, placeholder: 'Text', input_html: {value: @target_name} %>
     <%= f.submit "Search" %>
   <% end %>
