@@ -45,16 +45,23 @@
 
 <p>
   <div class="card bg-light mb-3 mx-auto" style="max-width: 20rem;">
-    <div class="card-header bg-primary text-white font-weight-light ">Category - <%= @task.category.title if @task.category %></div>
+    <div class="card-header bg-primary text-white font-weight-light "><%= "Category - #{@task.category.title}" if @task.category %></div>
     <div class="card-body font-weight-light">
-      <h5 class="card-title"><%= @task.title %><small class="text-muted"><%= @task.deadline_at ? "| Deadline at #{(l @task.deadline_at, format: '%d.%m.%Y')}" : nil%></small> </h5>
-<p class="card-text"><%= @task.note %></p>
-<p class="card-text font-weight-bold">Tags: <small><%= @task.tags.map{|tag| tag.title}.join(", ") %></small></p>
+      <h5 class="card-title">Title: <%= @task.title %> </h5>
+        <h5><small class="text-muted"><%= @task.deadline_at ? "Deadline at #{(l @task.deadline_at, format: '%d.%m.%Y')}" : nil%></small></h5>
+      <% unless @task.note == "" %>
+  <p class="card-text"><small>Note: <%= @task.note %></small></p>
+      <% end %>
+
+<% if @task.tags.size > 0 %>
+  <p class="card-text font-weight-bold">Tags: <small><%= @task.tags.map{|tag| tag.title}.join(", ") %></small></p>
+<% end %>
+
 </div>
 <div class="card-footer bg-transparent <%= @task.is_done ? "border-success" : "border-danger" %>">
   <p class="card-text">
     <small class="text-muted">
-      Is done -       <%= !@task.is_done.nil? || @task.is_done ? "ano" : "nie"%><br>
+      Is done -       <%= !@task.is_done.nil? || @task.is_done ? "YES" : "NO"%><br>
       Created at      <%= l @task.created_at, format: '%H:%M %d.%m.%Y'%><br>
       Last updated at <%= l @task.updated_at, format: '%H:%M %d.%m.%Y'%>
     </small>
