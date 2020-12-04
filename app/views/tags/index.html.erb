@@ -35,7 +35,11 @@
 
 <div align="center" class="mx-auto">
   <h1>Tags</h1>
-  <%= '<h1 class="display-3 text-muted">There are no categories...</h1>'.html_safe if @tags.length == 0 %>
+  <%= '<h1 class="display-3 text-muted">There are no tags...</h1>'.html_safe if @tags.length == 0 %>
+  <p>
+    <a type="button" class="btn btn-primary" href=<%= new_tag_path %>>New tag</a>
+  </p>
+
   <div class="card-columns">
 
     <% @tags.each do |tag| %>
@@ -61,6 +65,5 @@
 
 </div>
 <%#= link_to 'New tag', new_tag_path %>
-<a type="button" class="btn btn-outline-warning" href=<%= new_tag_path %>>New tag
-</a>
+<!--<a type="button" class="btn btn-outline-warning" href=<%#= new_tag_path %>>New tag</a>-->
 

@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@category) do |f| %>
+<%= simple_form_for @category, wrapper: :horizontal_form, :html => { :class => 'text-center font-weight-light' } do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 

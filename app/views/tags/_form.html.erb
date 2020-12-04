@@ -1,16 +1,18 @@
+<div class="container-fluid">
+  <%= simple_form_for @tag, wrapper: :horizontal_form, :html => { :class => 'text-center font-weight-light' } do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= simple_form_for(@tag) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <%= f.input :title %>
+      <%= f.input :color, as: :color %>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :color, as: :color %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn-primary"%>
+      <%= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
+      <%= link_to "Cancel", tags_path, {:class=>"btn btn-outline-primary"} %>
+    </div>
+  <% end %>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn-primary"%>
-    <%= f.button :button, "Reset", type: :reset, class: "btn-outline-secondary" %>
-    <%= link_to "Cancel", tags_path, {:class=>"btn btn-outline-primary"} %>
-  </div>
-<% end %>

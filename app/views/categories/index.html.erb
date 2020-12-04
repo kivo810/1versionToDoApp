@@ -37,6 +37,10 @@
 <div align="center" class="mx-auto">
   <h1>Categories</h1>
   <%= '<h1 class="display-3 text-muted">There are no categories...</h1>'.html_safe if @categories.length == 0 %>
+  <p>
+    <a type="button" class="btn btn-primary" href=<%= new_category_path %>>New category</a>
+  </p>
+
   <div class="card-columns">
 
     <% @categories.each do |category| %>
@@ -62,5 +66,5 @@
 
 </div>
 <%#= link_to 'New Category', new_category_path %>
-<a type="button" class="btn btn-outline-warning" href=<%= new_category_path %>>New Category
-</a>
+<!--<a type="button" class="btn btn-outline-warning" href=<%#= new_category_path %>>New Category-->
+<!--</a>-->
