@@ -2,16 +2,21 @@
 <h1 align="center"><%=link_to 'TASKS', root_path %></h1>
 </p>
 
-<p>
-<div align="center">
-  <a type="button" class="btn btn-outline-primary" href=<%= pending_tasks_path %>>Pending</a>
-  <a type="button" class="btn btn-warning" href=<%= new_task_path %>>New Task
-  </a>
-  <a type="button" class="btn btn-outline-primary" href=<%= completed_tasks_path %>>Completed</a>
+<!--<p>-->
+<!--<div align="center">-->
+<!--  <a type="button" class="btn btn-outline-primary" href=<%#= pending_tasks_path %>>Pending</a>-->
+<!--  <a type="button" class="btn btn-warning" href=<%#= new_task_path %>>New Task-->
+<!--  </a>-->
+<!--  <a type="button" class="btn btn-outline-primary" href=<%#= completed_tasks_path %>>Completed</a>-->
   <%#= link_to 'Pending', pending_tasks_path %>
   <%#= link_to 'Completed', completed_tasks_path %>
-</div>
+<!--</div>-->
+<!--</p>-->
+
+<p>
+  <%= render 'filter_form', task: @task, category: @category, tag: @tag %>
 </p>
+
 
 
 <!--<p>-->
@@ -97,14 +102,33 @@
   <%= paginate @tasks, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
 </div>
 
+<p>
+<div align="center">
+<!--  <a type="button" class="btn btn-outline-primary" href=<%#= pending_tasks_path %>>Pending</a>-->
+<!--  <a type="button" class="btn btn-warning" href=<%#= new_task_path %>>New Task-->
+<!--  </a>-->
+<!--  <a type="button" class="btn btn-outline-primary" href=<%#= completed_tasks_path %>>Completed</a>-->
+  <%#= link_to 'Pending', pending_tasks_path %>
+  <%#= link_to 'Completed', completed_tasks_path %>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a type="button" class="btn btn-primary" href=<%= pending_tasks_path %>>Pending</a>
+    <a type="button" class="btn btn-primary" href=<%= completed_tasks_path %>>Completed</a>
+  </div>
+</div>
+
+
+
 
 <p>
 <div align="center">
-  <a type="button" class="btn btn-outline-warning" href=<%= new_task_path %>>New Task
+  <div align="center" class="btn-group" role="group" aria-label="Basic example">
+  <a type="button" class="btn btn-success" href=<%= new_task_path %>>New Task
   </a>
-  <a type="button" class="btn btn-warning" href=<%= settings_path %>>Settings
+  <a type="button" class="btn btn-dark" href=<%= settings_path %>>Settings
   </a>
 </div>
+</div>
+
 </p>
 
 <!--<button type="button" class="btn btn-light">-->
@@ -114,9 +138,9 @@
   <%#= link_to 'Settings', settings_path %>
 <!--</button>-->
 
-<p>
-  <%= render 'filter_form', task: @task, category: @category, tag: @tag %>
-</p>
+<!--<p>-->
+  <%#= render 'filter_form', task: @task, category: @category, tag: @tag %>
+<!--</p>-->
 
 
 

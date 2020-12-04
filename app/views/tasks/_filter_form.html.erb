@@ -1,8 +1,9 @@
-
+<div align="center">
   <%= simple_form_for :search, url: tasks_path, method: "GET", wrapper: :inline_form,
-                      html: { class: "form-inline" } do |f| %>
+                      html: { class: "div-wrapper d-flex justify-content-center align-items-center" } do |f| %>
     <%= f.input :category, prompt: '--SELECT CATEGORY--', required: false, selected: @category, include_blank: true , collection: Category.where(:user_id => current_user.id)%>
     <%= f.input :tags, prompt: '--SELECT TAG--', required: false, selected: @tags, include_blank: true,  collection: Tag.where(:user_id => current_user.id)%>
     <%= f.input :name, placeholder: 'Text', input_html: {value: @target_name} %>
-    <%= f.submit "Search" %>
+    <%= f.submit "Search", class: "btn btn-outline-primary" %>
   <% end %>
+</div>

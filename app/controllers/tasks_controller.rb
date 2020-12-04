@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = Task.where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 5)
+    @tasks = Task.where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 8)
                  .includes(:tags).includes(:category).includes(:tag_associations)
     @search = params[:search]
     # p "dsaodoiroirewjoirjewuroiwuroiewuroiwruoiewruewoiruwroieureworuo"
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
       # p "taskstaskstasks"
       if @target_name != ""
         @tasks = Task.where(:user_id => current_user.id).where('title LIKE :search OR note LIKE :search', search: "%#{@target_name}%")
-                     .order("deadline_at desc").paginate(page: params[:page], per_page: 5).includes(:tags).includes(:category).includes(:tag_associations)
+                     .order("deadline_at desc").paginate(page: params[:page], per_page: 8).includes(:tags).includes(:category).includes(:tag_associations)
       else
         if @category != "" && @tags != ""
           @tasks = Task.by_tags(@tags).by_category(@category).where(:user_id => current_user.id).order("deadline_at desc").paginate(page: params[:page], per_page: 8)
